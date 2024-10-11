@@ -1,7 +1,10 @@
 import type { Config, Context } from "@netlify/edge-functions";
 import { getStore } from "https://esm.sh/@netlify/blobs";
 
-export async function handleRequest(request: Request, context: Context) {
+export default async function handleRequest(
+  request: Request,
+  context: Context
+) {
   const url = new URL(request.url);
   console.log(request.method, request.url);
 
