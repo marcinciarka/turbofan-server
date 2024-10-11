@@ -1,5 +1,5 @@
-import { getStore } from "@netlify/blobs";
-import type { Config } from "@netlify/edge-functions";
+import { getStore } from "https://esm.sh/@netlify/blobs";
+import type { Context } from "@netlify/edge-functions";
 
 export async function handleRequest(request: Request, context: Context) {
   const url = new URL(request.url);
@@ -64,10 +64,3 @@ export async function handleRequest(request: Request, context: Context) {
     return new Response(e.message, { status: 500 });
   }
 }
-
-export const config: Config = {
-  method: ["GET", "PUT"],
-  path: "/v8/artifacts/:hash",
-  // This lets us handle our own cache rules
-  cache: "manual",
-};
